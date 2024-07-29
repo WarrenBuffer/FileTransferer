@@ -1,0 +1,37 @@
+<app-navbar />
+<div class="container">
+    <p-card header="Register">
+        <form [formGroup]="this.formGroup" class="flex flex-column gap-2" (ngSubmit)="register(formGroup.value)">
+            <div class="flex flex-column md:flex-row gap-2">
+                <input type="text" pInputText placeholder="Name" [formControl]="name">
+                <p-message *ngIf="name.hasError('invalid') && name.dirty" severity="error" text="Min: 2. Max: 30. a-zA-Z ,.'-" ></p-message>
+            </div>
+            <div class="flex flex-column md:flex-row gap-2" >
+                <input type="text" pInputText placeholder="Surname" [formControl]="surname">
+                <p-message *ngIf="surname.hasError('invalid') && surname.dirty" severity="error" 
+                    text="Min: 2. Max: 30. a-zA-Z ,.'-"></p-message>
+            </div>
+            <div class="flex flex-column md:flex-row gap-2">
+                <input type="number" pInputText placeholder="Age" [formControl]="age">
+                <p-message *ngIf="age.dirty && age.invalid" severity="error" 
+                    text="Min: 1. Max: 100"></p-message>
+            </div>
+            <div class="flex flex-column md:flex-row gap-2">
+                <input type="text" pInputText placeholder="Username" [formControl]="username" >
+                <p-message *ngIf="username.hasError('invalid') && username.dirty" severity="error" 
+                    text="Min: 5. Max: 15. a-zA-Z0-9._-"></p-message>
+            </div>
+            <div class="flex flex-column md:flex-row gap-2">
+                <p-password [formControl]="password" id="password" placeholder="Password" promptLabel="Choose a password"
+                    weakLabel="Too simple" mediumLabel="Average complexity" strongLabel="Complex password" />
+                <p-message *ngIf="password.hasError('invalid') && password.dirty" severity="error" 
+                    text="Min: 8. Max: 32. a-zA-Z0-9@#&%^$?="></p-message>
+            </div>
+    
+            <div class="mt-4">
+                <p-button type="submit" severity="primary" [disabled]="name.hasError('invalid') || surname.hasError('invalid') || age.hasError('invalid') || username.hasError('invalid') || password.hasError('invalid')" [raised]="true" size="small"
+                    label="Register" />
+            </div>
+        </form>
+    </p-card>
+</div>

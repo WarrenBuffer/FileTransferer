@@ -1,0 +1,26 @@
+<div class="mb-4">
+    <p-toolbar>
+        <div class="p-toolbar-group-start">
+            <img src="/assets/img/dropbox-1.svg" width="35" height="35">
+        </div>
+        <div class="p-toolbar-group-end">
+            <div *ngIf="isLoggedIn() === false">
+                <a routerLink="/login">
+                    <p-button label="Login" icon="pi pi-sign-in" size="small" />
+                </a>
+                <a routerLink="/register">
+                    <p-button label="Register" icon="pi pi-user-plus" size="small" class="ml-2" />
+                </a>
+            </div>
+            <div *ngIf="isLoggedIn() === true" class="flex flex-row gap-4">
+                <div *ngIf="this.router.url == '/dashboard'">
+                    <p-button label="Upload" icon="pi pi-upload" size="small" (click)="this.router.navigate(['/upload'])"/>
+                </div>
+                <div *ngIf="this.router.url == '/upload'">
+                    <p-button label="Dashboard" icon="pi pi-home" size="small" (click)="this.router.navigate(['/dashboard'])"/>
+                </div>
+                <p-button label="Logout" icon="pi pi-sign-out" size="small" (click)="logout()"/>
+            </div>
+        </div>
+    </p-toolbar>
+</div>

@@ -1,0 +1,14 @@
+<app-navbar />
+<div class="container">
+    <p-card header="Login">
+        <input pInputText placeholder="Username" name="username" [(ngModel)]="username" />
+
+        <div class="mt-2">
+            <p-password name="password" placeholder="Password" [feedback]="false" [(ngModel)]="password" />
+        </div>
+        <div class="mt-4">
+            <p-button severity="primary" [disabled]="!username || !password" [raised]="true" size="small" label="Login"
+                (onClick)="login()" />
+        </div>
+    </p-card>
+</div>
